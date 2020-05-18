@@ -67,6 +67,21 @@
       return Math.floor(Math.random() * (max - min) + min);
     }
 
+    function getColores() {
+      const parejaDeColores = colores[getNumeroRandomEntre(0, colores.length)];
+      let fontColor, contenedorColor;
+
+      if (Math.random() > 0.5) {
+        fontColor = parejaDeColores[0];
+        contenedorColor = parejaDeColores[1];
+      } else {
+        fontColor = parejaDeColores[1];
+        contenedorColor = parejaDeColores[0];
+      }
+
+      return { fontColor, contenedorColor };
+    }
+
     function asignarTexto(mensaje = "No te pierdas esta aventura") {
       const palabras = mensaje.split(" ");
       const grupoDePalabras = [];
@@ -83,6 +98,17 @@
         .join("");
     }
 
+    function asignarEstilos() {
+      const colores = getColores();
+
+      document.querySelectorAll(".segmentoDelTexto").forEach((segmento) => {
+        segmento.style.backgroundColor = colores.contenedorColor;
+      });
+
+      titulo.style.color = colores.fontColor;
+    }
+
     asignarTexto();
+    asignarEstilos();
   </script>
 </html>
