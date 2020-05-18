@@ -37,10 +37,17 @@
         margin-top: 2rem;
         padding: 1rem 2rem;
       }
+
+      .image {
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+      }
     </style>
   </head>
 
   <body>
+    <img class="imagen" alt="" />
     <div class="contenedor">
       <h1 class="titulo"></h1>
     </div>
@@ -66,6 +73,7 @@
       ["#d2302c", "#f7f7f9"],
     ];
 
+    const imagen = document.querySelector(".imagen");
     const contenedor = document.querySelector(".contenedor");
     const titulo = document.querySelector(".titulo");
 
@@ -86,6 +94,10 @@
       }
 
       return { fontColor, contenedorColor };
+    }
+
+    function asignarImagen() {
+      imagen.src = "https://source.unsplash.com/featured?adventure";
     }
 
     function asignarTexto(mensaje = "No te pierdas esta aventura") {
@@ -112,6 +124,7 @@
       });
 
       titulo.style.color = colores.fontColor;
+      titulo.style.fontSize = `${getNumeroRandomEntre(4, 10)}rem`;
     }
 
     function posicionarContenedor() {
