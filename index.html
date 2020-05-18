@@ -19,6 +19,12 @@
         height: 100%;
       }
 
+      .contenedor {
+        position: absolute;
+        padding: 2rem;
+        max-width: 30%;
+      }
+
       .titulo {
         font-size: 3rem;
         font-weight: 600;
@@ -108,7 +114,28 @@
       titulo.style.color = colores.fontColor;
     }
 
+    function posicionarContenedor() {
+      const posiciones = [
+        { top: "2rem", left: "2rem" },
+        { top: "2rem", right: "2rem" },
+        { bottom: "2rem", left: "2rem" },
+        { bottom: "2rem", right: "2rem" },
+      ];
+
+      const posicion = posiciones[getNumeroRandomEntre(0, posiciones.length)];
+
+      Object.keys(posicion).forEach((key) => {
+        contenedor.style[key] = posicion[key];
+      });
+
+      contenedor.style.transform = `rotate(${getNumeroRandomEntre(
+        -10,
+        10
+      )}deg)`;
+    }
+
     asignarTexto();
     asignarEstilos();
+    posicionarContenedor();
   </script>
 </html>
